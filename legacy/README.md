@@ -1,77 +1,61 @@
-# Spin Systems
+# Legacy archive
 
-Research code and archived experiment definitions for exact quantum dynamics of
-interacting spin-1/2 ensembles, with an emphasis on NMR echoes, CPMG sequences,
-Rabi oscillations, and dynamical decoupling.
+This directory preserves the Fortran implementation, historical experiment
+inputs, and research notes from which the modern C++ `spinsim` was developed.
+It is archival material: the supported simulator, build system, tests, and
+documentation are in the repository root.
 
-The actively maintained implementation is [`spinsim/`](spinsim/README.md), a
-C++23 rewrite of the original Fortran 77 simulator. It replaces dozens of
-experiment-specific source copies with one tested executable driven by TOML
-configuration files.
-
-## Repository map
+## Contents
 
 | Path | Contents |
 |---|---|
-| [`spinsim/`](spinsim/) | C++23 library and CLI, 86 tests, example TOML configurations, migration tool, documentation, and a verbatim reference copy of the main legacy sources |
-| `CPMGZ*` | Archived CPMG experiment variants: Fortran sources and lightweight `.dat` inputs |
-| `Rabi*` | Archived Rabi/correlator variants for different spin counts, interactions, and pulse parameters |
-| `Cheb/` and root `*.f` | Earlier Chebyshev-propagation sources and numerical routines |
-| `Graphics_CPMG/` and `graphika.py` | Plotting and exploratory analysis scripts/notebooks |
-| root `*.lyx`, `*.tex`, `*.bib`, `*.nb` | Research notes and derivations |
+| `experiments/cpmg/` | 12 historical CPMG experiment directories and their lightweight `.dat` inputs |
+| `experiments/rabi/` | 33 Rabi and correlator experiment directories |
+| `reference/` | Canonical source set used as the stable Fortran reference |
+| `variants/` | Distinct historical source variants, named by the first 12 characters of their SHA-256 digest |
+| `source-manifest.csv` | Mapping from all 779 pre-cleanup source paths to 45 canonical files |
+| `materialize.py` | Verification and experiment reconstruction tool |
+| `prototypes/` | Early Chebyshev implementations and root-level prototypes |
+| `notes/` | LyX, TeX, BibTeX, and Mathematica research notes |
+| `literature/` | Bibliographic note for third-party papers, which are not redistributed |
 
-Generated executables, build trees, simulation output, TeX products, and local
-copies of third-party papers are intentionally not versioned. The local output
-archive is about 4.6 GiB and contains individual files above GitHub's 100 MiB
-limit; all source code and lightweight experiment inputs needed to reproduce
-new results are retained.
+Exact duplicate Fortran, header, makefile, and plotting-script copies were
+removed. Experiment data files were deliberately left in place: their directory
+context and relative includes are part of the historical experiment definition.
 
-## Build and verify
+Generated executables, simulation output, TeX build products, and local copies
+of papers are not versioned. The omitted local results occupy several gigabytes
+and can contain files above GitHub's size limit.
 
-From the repository root:
+## Reconstruct an experiment
 
-```bash
-cmake -S spinsim -B spinsim/build -DCMAKE_BUILD_TYPE=Release
-cmake --build spinsim/build -j
-ctest --test-dir spinsim/build --output-on-failure
-```
-
-Requirements are CMake 3.28 or newer, a C++23 compiler, and LAPACK. The first
-configure needs network access to fetch pinned versions of Catch2 and toml++.
-
-Run a small CPMG experiment:
+Run the tool from the repository root and choose one directory directly below
+`experiments/cpmg/` or `experiments/rabi/`:
 
 ```bash
-./spinsim/build/spinsim describe spinsim/configs/cpmg8z.toml
-./spinsim/build/spinsim run spinsim/configs/cpmg8z.toml \
-  --realizations 20 --out results/cpmg8z.csv
+python3 legacy/materialize.py legacy/experiments/rabi/Rabi_10_SzSz \
+  --out /tmp/Rabi_10_SzSz
 ```
 
-## Scientific and numerical notes
+The output directory must not already exist. Only tracked experiment artifacts
+are copied, so unversioned multi-gigabyte result files are not pulled into the
+reconstruction. When using a GitHub source archive without `.git`, the clean
+files present in that archive are copied instead.
 
-- The state vector contains `2^L` complex amplitudes; 16 spins is comfortable
-  and 18 is practical with patience.
-- The Chebyshev propagator is verified against dense LAPACK
-  eigendecomposition, while Bessel coefficients are checked against the legacy
-  Cody Fortran routines.
-- Monte-Carlo realisations are reproducible across thread counts because every
-  stream is derived from `(seed, realisation index)` and results are accumulated
-  in a fixed order.
-- For compatibility with the archived calculations, real-time propagation uses
-  `exp(+iHt)`, not the textbook `exp(-iHt)`. See
-  [`spinsim/docs/physics.md`](spinsim/docs/physics.md) before comparing signs or
-  phases with an external calculation.
-- The original archive has schedule-dependent random streams and mislabelled
-  error bars. See [`spinsim/docs/legacy.md`](spinsim/docs/legacy.md) before using
-  old `.out` files quantitatively.
+Verify every canonical path and checksum with:
 
-## Documentation
+```bash
+python3 legacy/materialize.py --verify
+```
 
-- [Physics and conventions](spinsim/docs/physics.md)
-- [Configuration reference](spinsim/docs/configuration.md)
-- [Architecture](spinsim/docs/architecture.md)
-- [Legacy implementation and migration](spinsim/docs/legacy.md)
+The manifest keeps paths as they appeared before the repository cleanup. This
+makes old notes and Git history searchable even though the physical duplicates
+are gone.
 
-No license has been selected yet; absence of a license means reuse permission is
-not granted automatically.
+## Scientific caveats
 
+The archive is evidence and migration material, not the recommended simulator.
+In particular, the original program had schedule-dependent random streams and
+reported population spread as though it were uncertainty of the mean. It also
+uses the convention `exp(+iHt)`. Read [`docs/legacy.md`](../docs/legacy.md) and
+[`docs/physics.md`](../docs/physics.md) before comparing archived numbers.

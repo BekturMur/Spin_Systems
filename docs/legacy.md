@@ -1,9 +1,10 @@
 # The Fortran original
 
-The `legacy/` directory holds the program this one replaces, kept verbatim. You
-need this document for two reasons: the archived results in `../CPMGZ*` and
-`../Rabi_*` were produced by it, and several of its defects change how those
-results should be read.
+The `legacy/` directory preserves the program this one replaces and the inputs
+used with it. CPMG and Rabi experiments are categorized under
+`legacy/experiments/`; exact source duplicates are represented by canonical
+files plus a checksum manifest. You need this document because several defects
+in the original change how archived results should be read.
 
 ## What it was
 
@@ -26,9 +27,11 @@ chebNMR2D-v6.f      main program, MPI master-worker over realisations
 ## The problem it had
 
 Not the physics — the fact that **the experiment was chosen by editing source and
-copying the directory.** The tree contains 629 `.f` files across 47 directories,
-of which only 29 are distinct. Four things varied, and each should have been
-configuration:
+copying the directory.** Before cleanup, the tree contained 641 legacy `.f`
+paths but only 28 distinct Fortran contents. Across Fortran, headers, makefiles,
+and plotting scripts, 779 historical paths reduce to 45 unique files. The
+mapping is preserved in `legacy/source-manifest.csv`. Four things varied, and
+each should have been configuration:
 
 | Varied | Where it was hard-coded |
 |---|---|
@@ -37,8 +40,8 @@ configuration:
 | Number of realisations | `chebNMR2D-v6.f:17` — `parameter (Nit=180)` |
 | Spin count, τ, sequence | `.dat` files plus `maxLtot` in `chsdpar.h` |
 
-Roughly forty of the forty-seven directories differ in nothing but the first.
-The `Observable` registry is what collapsed them.
+Most experiment directories differed in little more than the measured
+component. The `Observable` registry is what collapsed them.
 
 ## Defects found, and what they mean for the archived data
 
@@ -78,7 +81,8 @@ run on this code. They are expressible here.
 **The imperfect π pulse is deliberate.** `nmrtst2eP1.dat` sets Hx = 10700 with
 τ = 0.000314159265, so Hx·τ = 3.3615 rad = **1.07π** — a 7% over-rotation.
 That is the pulse-error physics the work was about, matching the Lang et al.
-paper in `../Papers/`. Do not "fix" it.
+paper referenced by the original research notes. Third-party papers are not
+redistributed; see `legacy/literature/README.md`. Do not "fix" it.
 
 **Time runs as exp(+iHt).** `chstepsPDDGnmr.f:175` sets the scaled Hamiltonian
 to `−H/emax`, which makes the expansion realise exp(+iHt) rather than the
@@ -99,7 +103,8 @@ the pulse. This code offers both, so the two can be compared by subtraction.
 ## Migrating input files
 
 ```bash
-python3 tools/dat2toml.py ../CPMGZ/CPMG8Z/nmrCPMG8.dat > configs/cpmg8.toml
+python3 tools/dat2toml.py \
+  legacy/experiments/cpmg/CPMGZ/CPMG8Z/nmrCPMG8.dat > configs/cpmg8.toml
 ./build/spinsim validate configs/cpmg8.toml
 ```
 
@@ -130,7 +135,8 @@ cluster path (`/opt/ud/openmpi-1.8.8/bin/mpifort`) that no longer exists;
 
 ```bash
 cd tests/data
-gfortran -O2 -std=legacy gen_bessel_reference.f ../../legacy/{rjbesl,ribesl}.f -o gen_bessel_reference
+gfortran -O2 -std=legacy gen_bessel_reference.f \
+  ../../legacy/reference/{rjbesl,ribesl}.f -o gen_bessel_reference
 ```
 
 Building the full program single-rank would need an MPI stub. It has not been

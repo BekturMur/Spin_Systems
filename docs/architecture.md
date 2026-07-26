@@ -178,11 +178,12 @@ ctest --test-dir build --output-on-failure
 ```
 
 Regenerating the Bessel reference data needs gfortran and is only necessary if
-`legacy/rjbesl.f` changes:
+`legacy/reference/rjbesl.f` changes:
 
 ```bash
 cd tests/data
-gfortran -O2 -std=legacy gen_bessel_reference.f ../../legacy/{rjbesl,ribesl}.f -o gen_bessel_reference
+gfortran -O2 -std=legacy gen_bessel_reference.f \
+  ../../legacy/reference/{rjbesl,ribesl}.f -o gen_bessel_reference
 ./gen_bessel_reference > bessel_reference.txt
 ```
 

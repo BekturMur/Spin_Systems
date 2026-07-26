@@ -6,7 +6,8 @@ than in the C++ binary: it has to be forgiving of input the real parser should
 reject, and none of it belongs in the simulation's hot path.
 
 Usage:
-    tools/dat2toml.py CPMGZ/CPMG8Z/nmrCPMG8.dat > configs/cpmg8z.toml
+    tools/dat2toml.py legacy/experiments/cpmg/CPMGZ/CPMG8Z/nmrCPMG8.dat \
+        > configs/cpmg8z.toml
 
 The legacy format is two nested languages:
 

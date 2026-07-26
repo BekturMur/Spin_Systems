@@ -5,8 +5,9 @@ c chstepsPDDGnmr.f:98 and chimstepsPDDGnmr.f:91 do, and dumps the resulting
 c coefficient tables. The C++ implementation is checked against this output, so
 c the two are compared through the same interface the physics code uses.
 c
-c Build:  gfortran -O2 gen_bessel_reference.f ../../legacy/rjbesl.f \
-c                      ../../legacy/ribesl.f -o gen_bessel_reference
+c Build:  gfortran -O2 gen_bessel_reference.f \
+c          ../../legacy/reference/rjbesl.f \
+c          ../../legacy/reference/ribesl.f -o gen_bessel_reference
 c Usage:  ./gen_bessel_reference > bessel_reference.txt
 c
 c Output format, one record per (kind, alpha):

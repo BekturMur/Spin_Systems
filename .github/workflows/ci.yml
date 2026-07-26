@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y cmake ninja-build g++ liblapack-dev libblas-dev
+
+      - name: Configure
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DSPINSIM_WERROR=ON
+
+      - name: Build
+        run: cmake --build build --parallel 2
+
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Verify legacy source manifest
+        run: python3 legacy/materialize.py --verify
+
+      - name: Validate legacy input conversion
+        shell: bash
+        run: |
+          while IFS= read -r script; do
+            if grep -q '^@' "$script"; then
+              python3 tools/dat2toml.py "$script" > "${RUNNER_TEMP}/converted.toml"
+              ./build/spinsim validate "${RUNNER_TEMP}/converted.toml"
+            fi
+          done < <(find legacy -name '*.dat' -type f)

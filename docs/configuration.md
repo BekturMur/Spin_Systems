@@ -237,10 +237,11 @@ The Fortran original printed neither correctly; see [legacy.md](legacy.md).
 ## Migrating a legacy `.dat` script
 
 ```bash
-python3 tools/dat2toml.py ../CPMGZ/CPMG8Z/nmrCPMG8.dat > configs/cpmg8.toml
+python3 tools/dat2toml.py \
+  legacy/experiments/cpmg/CPMGZ/CPMG8Z/nmrCPMG8.dat > configs/cpmg8.toml
 ```
 
-The converter handles all 130 archived scripts. It cannot recover three things,
+The converter handles all 134 archived scripts. It cannot recover three things,
 because they lived in Fortran source rather than in any data file, and it marks
 each with a `TODO`: the measured correlator, the realisation count, and the
 disorder strength. Fill them in by hand.

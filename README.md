@@ -1,5 +1,8 @@
 # spinsim
 
+[![CI](https://github.com/BekturMur/Spin_Systems/actions/workflows/ci.yml/badge.svg)](https://github.com/BekturMur/Spin_Systems/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Exact quantum dynamics of interacting spin-1/2 ensembles, for modelling NMR echo
 experiments and dynamical-decoupling sequences.
 
@@ -16,7 +19,7 @@ bugs found in the original that affect how its archived results should be read.
 
 ```bash
 cmake -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build -j18
+cmake --build build -j
 ctest --test-dir build            # 86 tests, should all pass
 
 ./build/spinsim describe configs/cpmg8z.toml
@@ -30,6 +33,9 @@ Needs CMake ≥ 3.28 and a C++23 compiler. On macOS, `brew install cmake`; LAPAC
 comes from the system Accelerate framework. Catch2 and toml++ are fetched
 automatically at configure time, so the first build needs network access.
 `gfortran` is only needed to regenerate the Bessel reference data.
+
+On Debian or Ubuntu, install the system dependencies with
+`sudo apt install cmake ninja-build g++ liblapack-dev libblas-dev`.
 
 ## Where to read next
 
@@ -96,8 +102,34 @@ apps/spinsim/             command-line front end
 tests/                    86 tests, plus bench_propagator
 tools/dat2toml.py         converter for the legacy .dat input format
 configs/                  worked examples
-legacy/                   the original Fortran, kept verbatim as a reference
-docs/
+docs/                     physics, configuration, architecture, migration
+legacy/                   categorized Fortran archive and experiment inputs
 ```
 
 About 3500 lines of library and application code, 2100 lines of tests.
+
+## Legacy archive
+
+The former experiment-specific Fortran trees are under [`legacy/`](legacy/).
+Their 779 historical source paths contained only 45 distinct files, so exact
+copies now live once in `legacy/reference/` or `legacy/variants/`. The
+content-addressed [`source-manifest.csv`](legacy/source-manifest.csv) records
+the original path, canonical path, and SHA-256 checksum for every copy.
+
+To reconstruct an old experiment as a self-contained directory:
+
+```bash
+python3 legacy/materialize.py legacy/experiments/rabi/Rabi_10_SzSz \
+  --out /tmp/Rabi_10_SzSz
+python3 legacy/materialize.py --verify
+```
+
+Simulation outputs and third-party papers are intentionally excluded from Git.
+The tracked inputs, notes, canonical sources, and reconstruction metadata remain.
+See the [archive guide](legacy/README.md) before interpreting old results.
+
+## Contributing and license
+
+Contributions are welcome; start with [CONTRIBUTING.md](CONTRIBUTING.md). This
+project is released under the [MIT License](LICENSE). Historical third-party
+material retained for provenance is identified in [THIRD_PARTY.md](THIRD_PARTY.md).
