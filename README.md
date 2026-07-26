@@ -35,7 +35,7 @@ automatically at configure time, so the first build needs network access.
 `gfortran` is only needed to regenerate the Bessel reference data.
 
 On Debian or Ubuntu, install the system dependencies with
-`sudo apt install cmake ninja-build g++ liblapack-dev libblas-dev`.
+`sudo apt install cmake ninja-build g++-14 liblapack-dev libblas-dev`.
 
 ## Where to read next
 
