@@ -1,77 +1,103 @@
-# Spin Systems
+# spinsim
 
-Research code and archived experiment definitions for exact quantum dynamics of
-interacting spin-1/2 ensembles, with an emphasis on NMR echoes, CPMG sequences,
-Rabi oscillations, and dynamical decoupling.
+Exact quantum dynamics of interacting spin-1/2 ensembles, for modelling NMR echo
+experiments and dynamical-decoupling sequences.
 
-The actively maintained implementation is [`spinsim/`](spinsim/README.md), a
-C++23 rewrite of the original Fortran 77 simulator. It replaces dozens of
-experiment-specific source copies with one tested executable driven by TOML
-configuration files.
+Given a set of spins, their couplings, and a pulse sequence, it propagates the
+Schrödinger equation exactly — no master equation, no semi-classical bath, no
+truncation of the Hilbert space — and reports echo signals averaged over
+disorder. The practical ceiling is 16 spins comfortably, 18 with patience.
 
-## Repository map
+It is a rewrite of a Fortran 77 program used for this physics around 2019. See
+[docs/legacy.md](docs/legacy.md) for what changed and why, including several
+bugs found in the original that affect how its archived results should be read.
 
-| Path | Contents |
+## Five minutes to a first result
+
+```bash
+cmake -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j18
+ctest --test-dir build            # 86 tests, should all pass
+
+./build/spinsim describe configs/cpmg8z.toml
+./build/spinsim run configs/cpmg8z.toml --realizations 20 --out /tmp/echo.csv
+```
+
+That last command runs a CPMG echo experiment on ten dipolar-coupled spins and
+writes a CSV whose header names every column. It takes about a fifth of a second.
+
+Needs CMake ≥ 3.28 and a C++23 compiler. On macOS, `brew install cmake`; LAPACK
+comes from the system Accelerate framework. Catch2 and toml++ are fetched
+automatically at configure time, so the first build needs network access.
+`gfortran` is only needed to regenerate the Bessel reference data.
+
+## Where to read next
+
+| Document | What it covers |
 |---|---|
-| [`spinsim/`](spinsim/) | C++23 library and CLI, 86 tests, example TOML configurations, migration tool, documentation, and a verbatim reference copy of the main legacy sources |
-| `CPMGZ*` | Archived CPMG experiment variants: Fortran sources and lightweight `.dat` inputs |
-| `Rabi*` | Archived Rabi/correlator variants for different spin counts, interactions, and pulse parameters |
-| `Cheb/` and root `*.f` | Earlier Chebyshev-propagation sources and numerical routines |
-| `Graphics_CPMG/` and `graphika.py` | Plotting and exploratory analysis scripts/notebooks |
-| root `*.lyx`, `*.tex`, `*.bib`, `*.nb` | Research notes and derivations |
+| [docs/physics.md](docs/physics.md) | The Hamiltonian, the Chebyshev method, what the observables mean, and **the sign and ordering conventions** — read this before trusting any number |
+| [docs/configuration.md](docs/configuration.md) | Complete TOML reference with worked examples, including XY-8 |
+| [docs/architecture.md](docs/architecture.md) | How the code is layered, and how to add an observable, a step kind, or a geometry |
+| [docs/legacy.md](docs/legacy.md) | The Fortran original: what it did, what was wrong with it, how to migrate old input files |
+| [docs/claude-science-prompt.md](docs/claude-science-prompt.md) | A briefing for planning research with this tool |
 
-Generated executables, build trees, simulation output, TeX products, and local
-copies of third-party papers are intentionally not versioned. The local output
-archive is about 4.6 GiB and contains individual files above GitHub's 100 MiB
-limit; all source code and lightweight experiment inputs needed to reproduce
-new results are retained.
+If you are here to run experiments rather than change code, physics and
+configuration are enough.
 
-## Build and verify
+## What it can and cannot do
 
-From the repository root:
+Can:
 
-```bash
-cmake -S spinsim -B spinsim/build -DCMAKE_BUILD_TYPE=Release
-cmake --build spinsim/build -j
-ctest --test-dir spinsim/build --output-on-failure
+- Arbitrary anisotropic Heisenberg couplings and per-spin local fields.
+- Pulse sequences as a nested program — `evolve`, `pulse`, `measure`, `repeat` —
+  so composite sequences like XY-8 and XY-16 are expressible.
+- Both realistic finite-duration pulses (evolution under a strong field) and
+  ideal instantaneous rotations, which lets you separate error sources by
+  subtraction.
+- Monte-Carlo averaging over randomly generated 2D dipolar geometries and
+  Gaussian field disorder, with correct error bars.
+- Real-time and imaginary-time propagation.
+
+Cannot, today:
+
+- Exceed about 18 spins. The state is 2^L amplitudes; this is the binding limit.
+- Report entanglement entropy or any subsystem quantity — there is no reduced
+  density matrix.
+- Take an explicit coupling table from a config file, so chains, lattices and
+  custom topologies are out of reach without a small extension. The
+  `Hamiltonian` class supports them; only the parser does not.
+- Model open-system dynamics. Everything is unitary; decoherence has to come
+  from the spin bath itself.
+
+[docs/architecture.md](docs/architecture.md) estimates what each of those costs
+to add. The first two are small.
+
+## Why the numbers can be trusted
+
+The propagator is checked against an entirely different algorithm — dense
+eigendecomposition via LAPACK — and agrees to better than 1e-10. Norm and energy
+are conserved to 1e-11 over 10⁴ steps with autonormalisation switched off, so
+expansion error is measured rather than hidden. The Bessel coefficients are
+checked against the original Cody routines compiled from Fortran, and the sparse
+kernels against dense Kronecker-product Pauli matrices built independently.
+
+Results are also bit-for-bit reproducible: a run on one thread and a run on
+eighteen produce byte-identical files, because each Monte-Carlo realisation
+draws from a stream fixed by (seed, index) and partial results are combined in
+index order. The original could not do this.
+
+Details in [docs/physics.md](docs/physics.md#verification).
+
+## Layout
+
+```
+include/spinsim/, src/    library, split into core / sequence / ensemble / io
+apps/spinsim/             command-line front end
+tests/                    86 tests, plus bench_propagator
+tools/dat2toml.py         converter for the legacy .dat input format
+configs/                  worked examples
+legacy/                   the original Fortran, kept verbatim as a reference
+docs/
 ```
 
-Requirements are CMake 3.28 or newer, a C++23 compiler, and LAPACK. The first
-configure needs network access to fetch pinned versions of Catch2 and toml++.
-
-Run a small CPMG experiment:
-
-```bash
-./spinsim/build/spinsim describe spinsim/configs/cpmg8z.toml
-./spinsim/build/spinsim run spinsim/configs/cpmg8z.toml \
-  --realizations 20 --out results/cpmg8z.csv
-```
-
-## Scientific and numerical notes
-
-- The state vector contains `2^L` complex amplitudes; 16 spins is comfortable
-  and 18 is practical with patience.
-- The Chebyshev propagator is verified against dense LAPACK
-  eigendecomposition, while Bessel coefficients are checked against the legacy
-  Cody Fortran routines.
-- Monte-Carlo realisations are reproducible across thread counts because every
-  stream is derived from `(seed, realisation index)` and results are accumulated
-  in a fixed order.
-- For compatibility with the archived calculations, real-time propagation uses
-  `exp(+iHt)`, not the textbook `exp(-iHt)`. See
-  [`spinsim/docs/physics.md`](spinsim/docs/physics.md) before comparing signs or
-  phases with an external calculation.
-- The original archive has schedule-dependent random streams and mislabelled
-  error bars. See [`spinsim/docs/legacy.md`](spinsim/docs/legacy.md) before using
-  old `.out` files quantitatively.
-
-## Documentation
-
-- [Physics and conventions](spinsim/docs/physics.md)
-- [Configuration reference](spinsim/docs/configuration.md)
-- [Architecture](spinsim/docs/architecture.md)
-- [Legacy implementation and migration](spinsim/docs/legacy.md)
-
-No license has been selected yet; absence of a license means reuse permission is
-not granted automatically.
-
+About 3500 lines of library and application code, 2100 lines of tests.
