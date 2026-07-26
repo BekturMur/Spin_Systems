@@ -2,8 +2,8 @@
 #include <chrono>
 #include <exception>
 #include <filesystem>
+#include <format>
 #include <iostream>
-#include <print>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -78,26 +78,29 @@ Options parseArguments(std::span<const std::string_view> args) {
 }
 
 void describe(const RunConfig& config) {
-  std::println("spins           {}", config.nspins);
-  std::println("state space     {} amplitudes", stateCount(config.nspins));
-  std::println("initial state   {}",
-               config.initialState == InitialStateKind::Random ? "random" :
-               config.initialState == InitialStateKind::AllUp ? "up" :
-               config.initialState == InitialStateKind::AllDown ? "down"
-                                                                : "basis");
-  std::println("realizations    {}", config.realizations);
-  std::println("seed            {}", config.seed);
-  std::println("geometry        {}",
-               config.generateGeometry ? "dipolar 2D, per realization"
-                                       : "from config");
-  std::println("field disorder  {:g}", config.fieldDisorder);
-  std::println("reference axis  {}", axisName(config.referenceAxis));
-  std::println("epsilon         {:g}", config.epsilon);
-  std::println("measurements    {} per realization",
-               config.sequence.measurementCount());
-  std::print("observables    ");
-  for (const std::string& spec : config.observables) std::print(" {}", spec);
-  std::println("");
+  std::cout << std::format("spins           {}\n", config.nspins);
+  std::cout << std::format("state space     {} amplitudes\n",
+                           stateCount(config.nspins));
+  std::cout << std::format(
+      "initial state   {}\n",
+      config.initialState == InitialStateKind::Random ? "random" :
+      config.initialState == InitialStateKind::AllUp ? "up" :
+      config.initialState == InitialStateKind::AllDown ? "down"
+                                                       : "basis");
+  std::cout << std::format("realizations    {}\n", config.realizations);
+  std::cout << std::format("seed            {}\n", config.seed);
+  std::cout << std::format(
+      "geometry        {}\n",
+      config.generateGeometry ? "dipolar 2D, per realization" : "from config");
+  std::cout << std::format("field disorder  {:g}\n", config.fieldDisorder);
+  std::cout << std::format("reference axis  {}\n",
+                           axisName(config.referenceAxis));
+  std::cout << std::format("epsilon         {:g}\n", config.epsilon);
+  std::cout << std::format("measurements    {} per realization\n",
+                           config.sequence.measurementCount());
+  std::cout << "observables    ";
+  for (const std::string& spec : config.observables) std::cout << ' ' << spec;
+  std::cout << '\n';
 }
 
 int run(const Options& options) {
@@ -108,7 +111,7 @@ int run(const Options& options) {
   }
 
   if (options.command == "validate") {
-    std::println("{}: ok", options.config.string());
+    std::cout << std::format("{}: ok\n", options.config.string());
     return 0;
   }
   if (options.command == "describe") {
@@ -127,10 +130,10 @@ int run(const Options& options) {
 
   if (options.output) {
     writeCsv(result, *options.output);
-    std::println(stderr, "{} realizations on {} threads in {:.2f}s -> {}",
-                 config.realizations, runner.threads(),
-                 std::chrono::duration<double>(elapsed).count(),
-                 options.output->string());
+    std::cerr << std::format(
+        "{} realizations on {} threads in {:.2f}s -> {}\n",
+        config.realizations, runner.threads(),
+        std::chrono::duration<double>(elapsed).count(), options.output->string());
   } else {
     writeCsv(result, std::cout);
   }
@@ -142,14 +145,14 @@ int run(const Options& options) {
 int main(int argc, char** argv) {
   const std::vector<std::string_view> args(argv + 1, argv + argc);
   if (args.empty() || args[0] == "-h" || args[0] == "--help") {
-    std::print("{}", kUsage);
+    std::cout << kUsage;
     return args.empty() ? 2 : 0;
   }
 
   try {
     return run(parseArguments(args));
   } catch (const std::exception& e) {
-    std::println(stderr, "spinsim: {}", e.what());
+    std::cerr << std::format("spinsim: {}\n", e.what());
     return 1;
   }
 }
