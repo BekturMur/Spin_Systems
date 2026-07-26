@@ -1,0 +1,48 @@
+# CPMG echo on a 2D dipolar spin ensemble.
+#
+# Replaces CPMGZ/CPMG8Z: nmrCPMG8.dat plus the three .dat files it includes,
+# plus the choice of correlator that used to live in chebsdPDDGnmr.f.
+#
+# The pi pulse is deliberately imperfect. Hx * tau = 10700 * 0.000314159265
+# = 1.07 pi, a seven per cent over-rotation, and accumulating that error over
+# the pulse train is the effect the work is about (see Papers/, Lang et al.,
+# "Pulse errors in DD-based sensing").
+
+[system]
+spins = 10           # legacy runs used 20; 10 keeps a demo run quick
+initial_state = "random"
+
+[field]
+hx = 0.0
+hy = 0.0
+hz = 0.0
+
+[ensemble]
+realizations = 180   # legacy Nit, which was a `parameter` in the main program
+seed = 20240726
+dipolar_geometry = true
+dipolar_scale = 1.0
+field_disorder = 100.0   # legacy HzScale
+
+[measurement]
+reference_axis = "x"     # A = sum sigma_x, matching CPMGZ's addHSx
+observables = ["corr:x", "norm"]
+
+[numerics]
+epsilon = 1e-7
+
+# --- sequence -----------------------------------------------------------
+# Free evolution, imperfect pi pulse, free evolution -- twenty times.
+
+[[step]]
+kind = "measure"
+
+[[step]]
+kind = "repeat"
+count = 20
+body = [
+  { kind = "evolve", tau = 0.05, steps = 1 },
+  { kind = "evolve", tau = 0.000314159265, steps = 1, hx = 10700.0 },
+  { kind = "evolve", tau = 0.05, steps = 1 },
+  { kind = "measure" },
+]

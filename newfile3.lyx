@@ -1,0 +1,352 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Our goal is to study spin echo with finite duration pulse.
+ Some papers showed that finite-duration pulse can lead to non-negligible
+ effect.
+\end_layout
+
+\begin_layout Standard
+We have a Hamiltonian in lab frame
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}=-\gamma_{e}H_{0}S_{z}+\gamma_{n}H_{0}I_{z}+A\boldsymbol{S}\cdot\boldsymbol{I}+x(t)\omega_{1}(t)(S_{x}\cos(\omega t)+S_{y}\sin(\omega t))+
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
++y(t)\omega_{1}(t)(-S_{x}\sin(\omega t)+S_{y}\cos(\omega t))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+First and second terms are Zeeman fields for electron and nuclear species,
+ third term is hyperfine coupling, fourth term is 
+\begin_inset Formula $X$
+\end_inset
+
+-pulse, fifth term is 
+\begin_inset Formula $Y$
+\end_inset
+
+-pulse.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\omega_{1}(t)=\omega_{1}(1-0.956(t/T_{2})^{2})e^{-(t/T_{2})^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $-1\leq x(t)\leq1,-1\leq y(t)\leq1$
+\end_inset
+
+ - modulation of signals, 
+\begin_inset Formula $T_{2}$
+\end_inset
+
+ is width of the signal
+\end_layout
+
+\begin_layout Standard
+Nuclear Zeeman frequencies are much larger than the hyperfine interaction
+ (
+\begin_inset Formula $\gamma_{n}H_{0}\gg A$
+\end_inset
+
+), so that the hyperfine interaction can be separated into secular and nonsecula
+r contributions,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A\boldsymbol{S}\cdot\boldsymbol{I}\approx AS_{z}(a_{\parallel}I_{z}+a_{\perp}I_{x})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $a_{\parallel}=A\cos\theta$
+\end_inset
+
+ , 
+\begin_inset Formula $a_{\perp}=A\sin\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We have a Hamiltonian in rotating frame
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}={\cal H}_{0}+{\cal H}_{P}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}_{0}=(\omega-\gamma_{e}H_{0})\hat{S}_{z}+a_{\perp}\hat{S}_{z}\hat{I}_{x}+a_{\parallel}S_{z}I_{z}+\gamma_{n}H_{0}I_{z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $\Delta=(\omega-\gamma_{e}H_{0})$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}_{P}(t)=x(t)\omega_{1}(t)S_{x}+y(t)\omega_{1}(t)S_{y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have evolution 
+\begin_inset Formula $(\tau-\pi_{x}-2\tau-\pi_{y}-2\tau-\pi_{-x}-2\tau-\pi_{-y}-\tau)^{N}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U=U_{\pi/2}U_{block}^{N}U_{\pi/2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U_{block}=U({\cal H}_{0},\tau)U_{\pi_{x}}U({\cal H}_{0},2\tau)U_{\pi_{y}}U({\cal H}_{0},2\tau)U_{\pi_{-x}}U({\cal H}_{0},2\tau)U_{\pi_{-y}}U({\cal H}_{0},\tau)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So, if we have ideal pulses 
+\begin_inset Formula $\omega_{1}(t)t_{w}=\pi$
+\end_inset
+
+, we have these Hamiltonians and evolution for different time intervals.
+\end_layout
+
+\begin_layout Standard
+If we have non-ideal pulses with flip angle 
+\begin_inset Formula $\beta=\int_{-\infty}^{\infty}\omega_{1}(t)dt=0.925221\omega_{1}T_{2}=\pi-\epsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+According [Andreas Brinkmann] , we have to divide our Hamiltonian into two
+ parts
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}={\cal H}_{A}+{\cal H}_{B}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with conditions : 1) 
+\begin_inset Formula $U_{A}(t_{a},t_{b})=\exp(-i{\cal H}_{A}(t_{b}-t_{a}))$
+\end_inset
+
+ can be estimated analytically and perioficity
+\begin_inset Formula ${\cal H}_{A}(t+NT)={\cal H}_{A}(t)$
+\end_inset
+
+, 2) 
+\begin_inset Formula $H_{B}(t)$
+\end_inset
+
+ is small, 
+\begin_inset Formula $\max||{\cal H}_{B}T||\ll1$
+\end_inset
+
+ , 
+\begin_inset Formula ${\cal H}_{B}(t+NT)={\cal H}_{B}(t)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In our case we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}_{A}=\Delta\hat{S}_{z}+a_{\perp}\hat{S}_{z}\hat{I}_{x}+a_{\parallel}S_{z}I_{z}+\gamma_{n}H_{0}I_{z}+\omega_{\pi}(x(t)S_{x}+y(t)S_{y})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}_{B}=\omega_{\varepsilon}(x(t)S_{x}+y(t)S_{y})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we want to transform Hamiltonian 
+\begin_inset Formula ${\cal H}_{B}$
+\end_inset
+
+ in toggling reference frame 
+\begin_inset Formula $\tilde{{\cal H}}_{B}=U_{A}^{\dagger}{\cal H}_{B}U_{A}$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

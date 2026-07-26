@@ -1,0 +1,163 @@
+%% LyX 2.3.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amsbsy}
+\usepackage{amssymb}
+\usepackage{esint}
+\usepackage{babel}
+\begin{document}
+Our goal is to study spin echo with finite duration pulse. Some papers
+showed that finite-duration pulse can lead to non-negligible effect.
+
+We have a Hamiltonian in lab frame
+
+\begin{equation}
+{\cal H}=-\gamma_{e}H_{0}S_{z}+\gamma_{n}H_{0}I_{z}+A\boldsymbol{S}\cdot\boldsymbol{I}+\omega_{1}(t-\tau/2+nT)(S_{x}\cos(\omega t)+S_{y}\sin(\omega t))+
+\end{equation}
+
+\[
++\omega_{1}(t-3\tau/2+nT)(-S_{x}\sin(\omega t)+S_{y}\cos(\omega t))
+\]
+
+Nuclear Zeeman frequencies are much larger than the hyperfine interaction
+($\gamma_{n}H_{0}\gg A$), so that the hyperfine interaction can be
+separated into secular and nonsecular contributions,
+
+\begin{equation}
+A\boldsymbol{S}\cdot\boldsymbol{I}\approx AS_{z}(a_{\parallel}I_{z}+a_{\perp}I_{x})
+\end{equation}
+
+with $a_{\parallel}=A\cos\theta$ , $a_{\perp}=A\sin\theta$.
+
+We have a Hamiltonian in rotating frame
+
+\begin{equation}
+{\cal H}={\cal H}_{0}+\sum_{n=0}^{N}{\cal H}_{P}^{n}(t)
+\end{equation}
+
+\begin{equation}
+{\cal H}_{0}=(\omega-\gamma_{e}H_{0})\hat{S}_{z}+a_{\perp}\hat{S}_{z}\hat{I}_{x}+a_{\parallel}S_{z}I_{z}+\gamma_{n}H_{0}I_{z}\approx
+\end{equation}
+
+\begin{equation}
+\approx\Delta S_{z}+a_{\perp}S_{z}I_{x}+\omega_{0}I_{z},
+\end{equation}
+
+with $\Delta=(\omega-\gamma_{e}H_{0})$, $\omega_{0}=\gamma_{n}H_{0}+a_{\parallel}S_{z}\approx\gamma_{n}H_{0}+a_{\parallel}/2$
+
+Without second term we have no spin echo. If we don't have only fourth
+term we have simple spin echo.
+
+\begin{equation}
+{\cal H}_{P}^{n}(t)=\omega_{1}(t-\tau/2+nT)\hat{S}_{x}+\omega_{1}(t-3\tau/2+nT)\hat{S}_{y},
+\end{equation}
+
+where $T=2\tau+2T_{2}$, with
+
+\begin{equation}
+\omega_{1}(t)=\omega_{1}(1-0.956(t/T_{2})^{2})e^{-(t/T_{2})^{2}}
+\end{equation}
+
+We have evolution $U=T\exp(-i\int({\cal H}_{0}+\sum_{n=0}^{N}{\cal H}_{P}^{n}(t))t)$.
+Here $T$ - is time-ordering. So, we have
+
+\begin{equation}
+U=U_{\pi/2}U_{0}...U_{N}U_{\pi/2}
+\end{equation}
+
+\begin{equation}
+U_{0}=T\exp(-i\int{\cal H}_{0}+{\cal H}_{P}^{0}(t))=\exp(-i(\int_{0}^{\tau/2}dt{\cal H}_{0}+\int_{-\varepsilon}^{\varepsilon}dt\omega_{1}(t-\tau/2)\hat{S}_{x}+
+\end{equation}
+
+\[
++\int_{\tau/2}^{3\tau/2}dt{\cal H}_{0}+\int_{-\varepsilon}^{\varepsilon}dt\omega_{1}(t-3\tau/2)\hat{S}_{y}+\int_{3\tau/2}^{2\tau}dt{\cal H}_{0}))
+\]
+
+We consider the case with $T_{2}\ll\tau$
+
+\begin{equation}
+{\cal H}(t)\approx\bar{{\cal H}}+{\cal H}^{(1)}
+\end{equation}
+
+So we have average Hamiltonian
+
+\begin{equation}
+\bar{{\cal H}}=\frac{1}{T}\int_{0}^{T}{\cal H}=\frac{1}{T}(2\tau{\cal H}_{0}+\int_{-T_{2}}^{T_{2}}[\omega_{1}(t-\tau/2)\hat{S}_{x}+\omega_{1}(t-3\tau/2)\hat{S}_{y}]dt)=
+\end{equation}
+
+\[
+=\frac{1}{2\tau+2T_{2}}(2\tau{\cal H}_{0}+F_{1}(\tau,T_{2})\hat{S}_{x}+F_{2}(\tau,T_{2})\hat{S}_{y})
+\]
+
+Magnus first order correction
+
+\begin{equation}
+{\cal H}^{(1)}=-\frac{i}{2T\hbar}\int_{0}^{T}dt_{2}\int_{0}^{t_{2}}dt_{1}[{\cal H}(t_{2}),{\cal H}(t_{1})]=-\frac{i}{2T\hbar}(\int_{-\varepsilon}^{\varepsilon}dt_{2}\int_{-\varepsilon}^{\varepsilon}dt_{1}\omega_{1}(t_{2}-\frac{3\tau}{2})\omega_{1}(t_{1}-\frac{\tau}{2}))[\hat{S}_{y},\hat{S}_{x}]+
+\end{equation}
+
+\[
++\tau\int_{-\varepsilon}^{\varepsilon}dt_{1}\omega_{1}(t_{1}-\frac{\tau}{2})[\Delta\hat{S}_{z}+a_{\perp}\hat{S}_{z}\hat{I}_{x},\hat{S}_{x}]+\tau\int_{-\varepsilon}^{\varepsilon}dt_{1}\omega_{1}(t_{1}-\frac{3\tau}{2})[\hat{S}_{y,}\Delta\hat{S}_{z}+a_{\perp}\hat{S}_{z}\hat{I}_{x}])=
+\]
+
+\[
+=\frac{1}{2T\hbar}(-\int_{-\varepsilon}^{\varepsilon}dt_{2}\int_{-\varepsilon}^{\varepsilon}dt_{1}\omega_{1}(t_{2}-\frac{3\tau}{2})\omega_{1}(t_{1}-\frac{\tau}{2}))\hat{S}_{z}+
+\]
+
+\[
++\tau\int_{-\varepsilon}^{\varepsilon}dt_{1}\omega_{1}(t_{1}-\frac{\tau}{2})[\Delta\hat{S}_{y}+a_{\perp}\hat{S}_{y}\hat{I}_{x}]+\tau\int_{-\varepsilon}^{\varepsilon}dt_{1}\omega_{1}(t_{1}-\frac{3\tau}{2})[\Delta\hat{S}_{x}+a_{\perp}\hat{S}_{x}\hat{I}_{x}])
+\]
+
+Since $\omega_{1}$ is strongly decaying function, we can replace limits
+of integration $\int_{-\varepsilon}^{\varepsilon}\rightarrow\int_{-\infty}^{\infty}$.
+And
+
+\begin{equation}
+{\cal H}^{(1)}=\frac{1}{2T\hbar}(-\int_{0}^{T}dt_{2}\int_{0}^{T}dt_{1}\omega_{1}(t_{2}-\frac{3\tau}{2})\omega_{1}(t_{1}-\frac{\tau}{2}))\hat{S}_{z}+
+\end{equation}
+
+\[
++\tau\int_{0}^{T}dt_{1}\omega_{1}(t_{1}-\frac{\tau}{2})(\Delta\hat{S}_{y}+a_{\perp}\hat{S}_{y}\hat{I}_{x})+\tau\int_{0}^{T}dt_{1}\omega_{1}(t_{1}-\frac{3\tau}{2})(\Delta\hat{S}_{x}+a_{\perp}\hat{S}_{x}\hat{I}_{x}))=
+\]
+
+\[
+=\frac{1}{2T\hbar}(-F_{3}(\tau)\hat{S_{z}}+F_{4}(\tau)(\Delta\hat{S}_{y}+a_{\perp}\hat{S}_{y}\hat{I}_{x})+F_{5}(\tau)(\Delta\hat{S}_{x}+a_{\perp}\hat{S}_{x}\hat{I}_{x}))
+\]
+
+So, we have average Hamiltonian + first Magnus correction
+
+\begin{equation}
+{\cal H}=\bar{{\cal H}}+{\cal H}^{(1)}=\frac{1}{T}(2\tau{\cal H}_{0}+F_{1}(\tau)\hat{S}_{x}+F_{2}(\tau)\hat{S}_{y})+
+\end{equation}
+
+\[
++\frac{1}{2T\hbar}(-F_{3}(\tau)\hat{S_{z}}+F_{4}(\tau)(\Delta\hat{S}_{y}+a_{\perp}\hat{S}_{y}\hat{I}_{x})+F_{5}(\tau)(\Delta\hat{S}_{x}+a_{\perp}\hat{S}_{x}\hat{I}_{x})
+\]
+
+Let us consider spin echo in two-qubit state in the framework of denisty
+matrix.
+
+\begin{equation}
+\langle S_{x}\rangle=Tr(S_{x}\rho(t))=Tr(S_{x}\rho(t))=Tr(S_{x}T(e^{-i{\cal H}t}\rho(0)e^{i{\cal H}t}))
+\end{equation}
+
+We have initial state $|x\rangle$ , $\rho_{S}(0)=1+\varepsilon S_{x}\otimes1_{n}$
+
+\[
+Tr(S_{x}T(e^{-i{\cal H}t}\rho(0)e^{i{\cal H}t}))
+\]
+
+${\cal H}(t)\approx\bar{{\cal H}}+{\cal H}^{(1)}$
+
+We want to calculate magnetization
+
+\begin{equation}
+\langle S_{x}(t=T=2\tau)\rangle=Tr(S_{x}e^{-i(\bar{{\cal H}}+{\cal H}^{(1)})T}\rho(0)e^{i\bar{({\cal H}}+{\cal H}^{(1)})T}))=
+\end{equation}
+
+\[
+=\varepsilon Tr(S_{x}e^{-i(\bar{{\cal H}}+{\cal H}^{(1)})T}S_{x}e^{i(\bar{{\cal H}}+{\cal H}^{(1)})T}))
+\]
+
+\end{document}

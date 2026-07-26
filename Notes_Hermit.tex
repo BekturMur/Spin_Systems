@@ -1,0 +1,165 @@
+%% LyX 2.3.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amsbsy}
+\usepackage{amstext}
+\usepackage{esint}
+\usepackage{babel}
+\begin{document}
+Our goal is to study spin echo with finite duration pulse. Some papers
+showed that finite-duration pulse can lead to non-negligible effect.
+
+We have a Hamiltonian in lab frame
+
+\begin{equation}
+{\cal H}=-\gamma_{e}H_{0}S_{z}+\gamma_{n}H_{0}I_{z}+A\boldsymbol{S}\cdot\boldsymbol{I}+x(t)\omega_{1}(t)(S_{x}\cos(\omega t)+S_{y}\sin(\omega t))+
+\end{equation}
+
+\[
++y(t)\omega_{1}(t)(-S_{x}\sin(\omega t)+S_{y}\cos(\omega t))
+\]
+
+First and second terms are Zeeman fields for electron and nuclear
+species, third term is hyperfine coupling, fourth term is $X$-pulse,
+fifth term is $Y$-pulse.
+
+\begin{equation}
+\omega_{1}(t)=\omega_{1}(1-0.956(t/T_{2})^{2})e^{-(t/T_{2})^{2}}
+\end{equation}
+
+$-1\leq x(t)\leq1,-1\leq y(t)\leq1$ - modulation of signals, $T_{2}$
+is width of the signal
+
+hyperfine interaction can be separated into secular and nonsecular
+contributions,
+
+\begin{equation}
+A\boldsymbol{S}\cdot\boldsymbol{I}\approx AS_{z}(a_{\parallel}I_{z}+a_{\perp}I_{x})
+\end{equation}
+
+with $a_{\parallel}=A\cos\theta$ , $a_{\perp}=A\sin\theta$.
+
+We have a Hamiltonian in rotating frame
+
+\begin{equation}
+{\cal H}={\cal H}_{0}+{\cal H}_{P}(t)
+\end{equation}
+
+\begin{equation}
+{\cal H}_{0}=a_{\perp}\hat{S}_{z}\hat{I}_{x}+a_{\parallel}S_{z}I_{z}+\omega_{n}I_{z}
+\end{equation}
+
+\begin{equation}
+{\cal H}_{P}(t)=x(t)\omega_{1}(t)S_{x}+y(t)\omega_{1}(t)S_{y}
+\end{equation}
+
+We have evolution $(\tau-\pi_{x}-2\tau-\pi_{y}-2\tau-\pi_{-x}-2\tau-\pi_{-y}-\tau)^{N}$
+
+\begin{equation}
+U=U_{\pi/2}U_{block}^{N}U_{\pi/2}
+\end{equation}
+
+where
+
+\begin{equation}
+U_{block}=U({\cal H}_{0},\tau)U_{\pi_{-y}}U({\cal H}_{0},2\tau)U_{\pi_{-x}}U({\cal H}_{0},2\tau)U_{\pi_{y}}U({\cal H}_{0},2\tau)U_{\pi_{x}}U({\cal H}_{0},\tau)
+\end{equation}
+
+So, if we have ideal pulses $\omega_{1}(t)t_{w}=\pi$, we have these
+Hamiltonians and evolution for different time intervals.
+
+We have non-ideal pulses with flip angle $\beta=\int_{-\infty}^{\infty}\omega_{1}(t)dt=0.925221\omega_{1}T_{2}=\pi+\epsilon$.
+
+We want to apply average Hamiltonian theory, but we don't have the
+condition $||{\cal H}_{A}||T\ll1$, since hyperfine is strong. To
+use perturbation theory we should have a small parameter. We should
+transfrom our unitary operation
+
+So, we have the Hamiltonian between pulses after $\pi_{x}/2$ rotation
+
+\begin{equation}
+{\cal H}_{0}=a_{\perp}\hat{S}_{y}\hat{I}_{x}+a_{\parallel}S_{y}I_{z}+\omega_{n}I_{z}
+\end{equation}
+
+And the evolution operator
+
+\begin{equation}
+U_{block}=U_{0}(\tau)\bar{P}_{y}(\pi)\bar{P}_{y}(\varepsilon,{\cal H}_{0})U_{0}(2\tau)\bar{P}_{x}(\pi)\bar{P}_{x}(\varepsilon,{\cal H}_{0})U_{0}(2\tau)\cdot
+\end{equation}
+
+\[
+\cdot P_{y}(\pi)P_{y}(\varepsilon,{\cal H}_{0})U_{0}(2\tau)P_{x}(\pi)P_{x}(\varepsilon,{\cal H}_{0})U_{0}(\tau)=
+\]
+
+\[
+=U_{0}(\tau)\bar{P}_{y}(\pi)\bar{P}_{x}(\pi)P_{y}(\pi)P_{x}(\pi)\bar{P}_{y_{3}}(\varepsilon,{\cal H}_{3})U_{3}(2\tau)\bar{P}_{x}(\varepsilon,{\cal H}_{2})U_{2}(2\tau)\cdot
+\]
+
+\[
+\cdot P_{y_{1}}(\varepsilon,{\cal H}_{1})U_{1}(2\tau)P_{x}(\varepsilon,{\cal H}_{0})U_{0}(\tau)=
+\]
+
+\[
+=U_{0}(\tau)\bar{P}_{y_{3}}(\varepsilon,{\cal H}_{3})U_{3}(2\tau)\bar{P}_{x}(\varepsilon,{\cal H}_{2})U_{2}(2\tau)P_{y_{1}}(\varepsilon,{\cal H}_{1})U_{1}(2\tau)P_{x}(\varepsilon,{\cal H}_{0})U_{0}(\tau)
+\]
+
+The evolution operators between pulses in toggle-frame are
+
+\begin{equation}
+U_{1}=P_{x}^{\dagger}U_{0}P_{x}
+\end{equation}
+
+\begin{equation}
+U_{2}=P_{x}^{\dagger}P_{y}^{\dagger}U_{0}P_{y}P_{x}
+\end{equation}
+
+\begin{equation}
+U_{3}=P_{x}^{\dagger}P_{y}^{\dagger}\bar{P}_{x}^{\dagger}U_{0}\bar{P}_{x}P_{y}P_{x}
+\end{equation}
+
+And the evolution operators during pulses are
+
+\begin{equation}
+P_{y_{1}}(\varepsilon,{\cal H}_{1})=\exp(-iP_{x}^{\dagger}S_{y}P_{x}\varepsilon-i{\cal H}_{1}t_{w})=\exp(+iS_{y}\varepsilon-i{\cal H}_{1}t_{w})
+\end{equation}
+
+\[
+\bar{P}_{x_{2}}(\varepsilon,{\cal H}_{2})=\exp(+iP_{x}^{\dagger}P_{y}^{\dagger}S_{x}P_{y}P_{x}\varepsilon-i{\cal H}_{2}t_{w})=\exp(-iS_{x}\varepsilon-i{\cal H}_{2}t_{w})
+\]
+
+\begin{equation}
+\bar{P}_{y_{3}}(\varepsilon,{\cal H}_{3})=\exp(+iP_{x}^{\dagger}P_{y}^{\dagger}\bar{P}_{x}^{\dagger}S_{y}\bar{P}_{x}P_{y}P_{x}\varepsilon-i{\cal H}_{3}t_{w})=\exp(+iS_{y}\varepsilon-i{\cal H}_{3}t_{w})
+\end{equation}
+
+with the Hamiltonians in toggle frames are
+
+\begin{equation}
+{\cal H}_{0}=a_{\perp}\hat{S}_{y}\hat{I}_{x}+a_{\parallel}S_{y}I_{z}+\omega_{n}I_{z}
+\end{equation}
+
+\begin{equation}
+{\cal H}_{1}=P_{x}^{\dagger}{\cal H}_{0}P_{x}=-a_{\perp}\hat{S}_{y}\hat{I}_{x}-a_{\parallel}S_{y}I_{z}+\omega_{n}I_{z}
+\end{equation}
+
+\begin{equation}
+{\cal H}_{2}=P_{x}^{\dagger}P_{y}^{\dagger}{\cal H}_{0}P_{y}P_{x}=-a_{\perp}\hat{S}_{y}\hat{I}_{x}-a_{\parallel}S_{y}I_{z}+\omega_{n}I_{z}
+\end{equation}
+
+\begin{equation}
+{\cal H}_{3}=P_{x}^{\dagger}P_{y}^{\dagger}\bar{P}_{x}^{\dagger}{\cal H}_{0}\bar{P}_{x}P_{y}P_{x}=\text{\ensuremath{a_{\perp}\hat{S}_{y}\hat{I}_{x}}+\ensuremath{a_{\parallel}S_{y}I_{z}}+\ensuremath{\omega_{n}I_{z}}}
+\end{equation}
+
+Now we want to average Hamiltonian during pulse (?). So, we have
+
+\begin{equation}
+{\cal H}_{av}^{pulse}=\frac{1}{T}\sum_{i=0}^{3}{\cal H}_{i}\tau_{i}=\frac{1}{4t_{w}}(\varepsilon(S_{x}-S_{y}+S_{x}-S_{y})+t_{w}\omega_{n}I_{z})=
+\end{equation}
+
+\[
+=\frac{1}{4t_{w}}(2\varepsilon(S_{x}-S_{y})+t_{w}\omega_{n}I_{z})
+\]
+
+Now we want to consider first order in Mangus expansion
+\end{document}

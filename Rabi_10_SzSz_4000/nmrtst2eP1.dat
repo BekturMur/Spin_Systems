@@ -1,0 +1,56 @@
+HEISENBERG INTERACTION
+1,10,0.0, 0.0, 1.0,
+END
+SPIN : 1 (Hx0, Hx1, Omega_x, Hy0, Hy1, Omega_y, Hz0, Hz1, Omega_z, phi_x, phi_y, phi_z)
+6.28, 0, 0, 0.00000, 0, 0, 00.0, 00.0, 0, 0, 0, 0,
+END
+SPIN : 2 (Hx0, Hx1, Omega_x, Hy0, Hy1, Omega_y, Hz0, Hz1, Omega_z, phi_x, phi_y, phi_z)
+6.28, 0, 0, 0.00000, 0, 0, 00.0, 00.0, 0, 0, 0, 0,
+END
+SPIN : 3 (Hx0, Hx1, Omega_x, Hy0, Hy1, Omega_y, Hz0, Hz1, Omega_z, phi_x, phi_y, phi_z)
+6.28, 0, 0, 0.00000, 0, 0, 00.0, 00.0, 0, 0, 0, 0,
+END
+SPIN : 4 (Hx0, Hx1, Omega_x, Hy0, Hy1, Omega_y, Hz0, Hz1, Omega_z, phi_x, phi_y, phi_z)
+6.28, 0, 0, 0.00000, 0, 0, 00.0, 00.0, 0, 0, 0, 0,
+END
+SPIN : 5 (Hx0, Hx1, Omega_x, Hy0, Hy1, Omega_y, Hz0, Hz1, Omega_z, phi_x, phi_y, phi_z)
+6.28, 0, 0, 0.00000, 0, 0, 00.0, 00.0, 0, 0, 0, 0,
+END
+SPIN : 6 (Hx0, Hx1, Omega_x, Hy0, Hy1, Omega_y, Hz0, Hz1, Omega_z, phi_x, phi_y, phi_z)
+6.28, 0, 0, 0.00000, 0, 0, 00.0, 00.0, 0, 0, 0, 0,
+END
+SPIN : 7 (Hx0, Hx1, Omega_x, Hy0, Hy1, Omega_y, Hz0, Hz1, Omega_z, phi_x, phi_y, phi_z)
+6.28, 0, 0, 0.00000, 0, 0, 00.0, 00.0, 0, 0, 0, 0,
+END
+SPIN : 8 (Hx0, Hx1, Omega_x, Hy0, Hy1, Omega_y, Hz0, Hz1, Omega_z, phi_x, phi_y, phi_z)
+6.28, 0, 0, 0.00000, 0, 0, 00.0, 00.0, 0, 0, 0, 0,
+END
+SPIN : 9 (Hx0, Hx1, Omega_x, Hy0, Hy1, Omega_y, Hz0, Hz1, Omega_z, phi_x, phi_y, phi_z)
+6.28, 0, 0, 0.00000, 0, 0, 00.0, 00.0, 0, 0, 0, 0,
+END
+SPIN : 10 (Hx0, Hx1, Omega_x, Hy0, Hy1, Omega_y, Hz0, Hz1, Omega_z, phi_x, phi_y, phi_z)
+6.28, 0, 0, 0.00000, 0, 0, 00.0, 00.0, 0, 0, 0, 0,
+END
+SUB-SYSTEM SIZE
+1
+END
+SPINS TO BE TRACED OUT
+9
+END
+START RANFX FROM
+-1
+END
+NUMBER OF FIELD STEPS
+1
+END
+TIME STEP ;
+0.025
+END
+NUMBER OF INTERMEDIATE TIME STEPS
+1
+END
+HNORM AUTO
+-1
+END
+CHECK NORM
+END

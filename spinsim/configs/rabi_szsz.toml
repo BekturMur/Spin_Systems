@@ -1,0 +1,44 @@
+# Driven Rabi oscillation, measuring the z-z correlator.
+#
+# Replaces Rabi_10_SzSz. Against cpmg8z.toml the only differences are the
+# reference axis, the observable and the sequence -- in the legacy tree these
+# were two directories with two edited copies of chebsdPDDGnmr.f, differing at
+# line 110 by one identifier (addHSx versus addHSz).
+
+[system]
+spins = 10
+initial_state = "random"
+
+[field]
+hx = 6.28            # continuous drive
+hy = 0.0
+hz = 1.00
+
+[ensemble]
+realizations = 180
+seed = 20240726
+dipolar_geometry = true
+dipolar_scale = 1.0
+field_disorder = 100.0
+
+[measurement]
+reference_axis = "z"          # A = sum sigma_z, matching Rabi_10_SzSz's addHSz
+observables = ["corr:z", "norm"]
+
+[numerics]
+epsilon = 1e-7
+
+# --- sequence -----------------------------------------------------------
+# Drive continuously, sampling as it goes. The legacy file cycled 1000 times;
+# 200 is enough to show several Rabi periods.
+
+[[step]]
+kind = "measure"
+
+[[step]]
+kind = "repeat"
+count = 200
+body = [
+  { kind = "evolve", tau = 0.001, steps = 1 },
+  { kind = "measure" },
+]

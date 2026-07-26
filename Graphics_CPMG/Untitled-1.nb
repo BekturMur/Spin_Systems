@@ -1,0 +1,74 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2018,         64]
+NotebookOptionsPosition[      1457,         46]
+NotebookOutlinePosition[      1848,         62]
+CellTagsIndexPosition[      1805,         59]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Import", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.8154226883969803`*^9, 3.815422689840329*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"38d6f499-38d8-4ccc-8ae9-6d8b9bba2950"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Import", "argt", 
+   "\"\\!\\(\\*RowBox[{\\\"Import\\\"}]\\) called with \\!\\(\\*RowBox[{\\\"0\
+\\\"}]\\) arguments; \\!\\(\\*RowBox[{\\\"1\\\"}]\\) or \
+\\!\\(\\*RowBox[{\\\"2\\\"}]\\) arguments are expected.\"", 2, 1, 1, 
+   24384385177537119092, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.815422691356697*^9},
+ CellLabel->
+  "During evaluation of \
+In[1]:=",ExpressionUUID->"73b0a290-d723-4e97-a383-8cfff33fff11"],
+
+Cell[BoxData[
+ RowBox[{"Import", "[", "]"}]], "Output",
+ CellChangeTimes->{3.8154226915062838`*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"2618140c-7648-480d-ba86-9c1ae5989de7"]
+}, Open  ]]
+},
+WindowSize->{808, 710},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"62b18d63-d512-4403-935f-2218d59d0e67"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 200, 3, 30, "Input",ExpressionUUID->"38d6f499-38d8-4ccc-8ae9-6d8b9bba2950"],
+Cell[783, 27, 478, 11, 24, "Message",ExpressionUUID->"73b0a290-d723-4e97-a383-8cfff33fff11"],
+Cell[1264, 40, 177, 3, 57, "Output",ExpressionUUID->"2618140c-7648-480d-ba86-9c1ae5989de7"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

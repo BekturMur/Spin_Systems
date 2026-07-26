@@ -1,0 +1,213 @@
+\documentclass[
+  onecolumn,
+  aps,
+  %prl,
+  amsmath,
+  amssymb,
+  superscriptaddress,
+  nofootinbib,
+  floatfix
+]{revtex4-2}
+\usepackage{mathtools}%enhanced math capabilities
+\usepackage{bm}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{pifont}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{accents}
+\usepackage{upgreek}
+\usepackage{array}
+\usepackage{color}
+\usepackage{verbatim}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, citecolor=blue, urlcolor=blue, linkcolor=blue}
+
+\makeatletter
+\newcommand*{\supplementarystart}{%
+  \close@column@grid%
+  \clearpage%
+  \onecolumngrid%
+  \setcounter{enumiv}{0} % resets counter for references
+  \setcounter{equation}{0} % resets counter for equations
+  \setcounter{figure}{0} % resets counter for figs
+  \setcounter{table}{0} % resets counter for tables
+  \setcounter{page}{1}
+  \c@secnumdepth=4
+  \renewcommand{\theequation}{s\arabic{equation}} % equations numbered with S...
+  \renewcommand{\bibnumfmt}[1]{[s##1]} % bibtems [S...]
+  \renewcommand{\@onlinecite}{s\citealp} % citations [S...]
+  \renewcommand{\cite}[1]{{[}\onlinecite{##1}{]}}
+  \renewcommand{\thefigure}{s\arabic{figure}}
+  \renewcommand{\thetable}{s\Roman{table}}
+  \renewcommand{\thepage}{s\arabic{page}}
+}
+\makeatother
+
+\newcommand{\s}{\sum\limits}
+\newcommand{\p}{\prod\limits}
+\newcommand{\pa}{\partial}
+\newcommand{\il}{\int\limits}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\e}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\es}{\end{equation*}}
+\newcommand{\beml}{\begin{subequations}}
+\newcommand{\eml}{\end{subequations}}
+\newcommand{\beq}{\begin{eqnarray}}
+\newcommand{\eq}{\end{eqnarray}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bpm}{\begin{pmatrix}}
+\newcommand{\epm}{\end{pmatrix}}
+\newcommand{\bc}{\begin{cases}}
+\newcommand{\ec}{\end{cases}}
+\newcommand{\lt}{\left}
+\newcommand{\rt}{\right}
+\newcommand{\n}{\nonumber}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\dd}{\displaystyle}
+\newcommand{\bs}{\mathbf}
+\newcommand{\bb}{\boldsymbol}
+\newcommand{\h}{^\dagger}
+\newcommand{\0}{^{\phantom{\dagger}}}
+\newcommand{\one}{\openone}
+\newcommand{\uvec}[1]{\hat{\bb{#1}}}
+\newcommand{\para}{\parallel}
+%\newcommand{\d}{\!d\mkern-1.5mu}
+
+\renewcommand{\log}{\mathop{\mathrm{ln}}\nolimits}
+
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\ctg}{cotan}
+\DeclareMathOperator{\arcsh}{arcsinh}
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\dv}{div}
+
+\begin{document}
+	
+\title{Spin echo in the presence of Hermitian pulse}	
+
+
+\date{\today}
+%\email[bmurzaliev@science.ru.nl]
+\begin{abstract}
+
+We considered spin echo in NV center applying Hermitian pulse
+\end{abstract}
+\keywords{spin echo, NV center}	
+\maketitle
+	
+\section{Introduction}
+A major challenge in quantum computing is a control and measurement of qubits. One of the most promising candidate for building block of quantum computing and network is NV center in a diamond.
+\section{Model}
+
+
+Our goal is to study spin echo with finite duration pulse. Some papers
+showed that finite-duration pulse can lead to non-negligible effect.
+
+We have a Hamiltonian in lab frame
+
+\begin{equation}
+{\cal H}=-\gamma_{e}H_{0}S_{z}+\gamma_{n}H_{0}I_{z}+A\boldsymbol{S}\cdot\boldsymbol{I}+x(t)\omega_{1}(t)(S_{x}\cos(\omega t)+S_{y}\sin(\omega t))+
+\end{equation}
+
+\[
++y(t)\omega_{1}(t)(-S_{x}\sin(\omega t)+S_{y}\cos(\omega t))
+\]
+
+First and second terms are Zeeman fields for electron and nuclear
+species, third term is hyperfine coupling, fourth term is $X$-pulse,
+fifth term is $Y$-pulse.
+
+\begin{equation}
+\omega_{1}(t)=\omega_{1}(1-0.956(t/T_{2})^{2})e^{-(t/T_{2})^{2}}
+\end{equation}
+
+$-1\leq x(t)\leq1,-1\leq y(t)\leq1$ - modulation of signals, $T_{2}$
+is width of the signal
+
+Nuclear Zeeman frequencies are much larger than the hyperfine interaction
+($\gamma_{n}H_{0}\gg A$), so that the hyperfine interaction can be
+separated into secular and nonsecular contributions,
+
+\begin{equation}
+A\boldsymbol{S}\cdot\boldsymbol{I}\approx AS_{z}(a_{\parallel}I_{z}+a_{\perp}I_{x})
+\end{equation}
+
+with $a_{\parallel}=A\cos\theta$ , $a_{\perp}=A\sin\theta$.
+
+We have a Hamiltonian in rotating frame
+
+\begin{equation}
+{\cal H}={\cal H}_{0}+{\cal H}_{P}(t)
+\end{equation}
+
+\begin{equation}
+{\cal H}_{0}=(\omega-\gamma_{e}H_{0})\hat{S}_{z}+a_{\perp}\hat{S}_{z}\hat{I}_{x}+a_{\parallel}S_{z}I_{z}+\gamma_{n}H_{0}I_{z}
+\end{equation}
+
+with $\Delta=(\omega-\gamma_{e}H_{0})$,
+
+\begin{equation}
+{\cal H}_{P}(t)=x(t)\omega_{1}(t)S_{x}+y(t)\omega_{1}(t)S_{y}
+\end{equation}
+
+We have evolution $(\tau-\pi_{x}-2\tau-\pi_{y}-2\tau-\pi_{-x}-2\tau-\pi_{-y}-\tau)^{N}$
+
+\begin{equation}
+U=U_{\pi/2}U_{block}^{N}U_{\pi/2}
+\end{equation}
+
+where
+
+\begin{equation}
+U_{block}=U({\cal H}_{0},\tau)U_{\pi_{x}}U({\cal H}_{0},2\tau)U_{\pi_{y}}U({\cal H}_{0},2\tau)U_{\pi_{-x}}U({\cal H}_{0},2\tau)U_{\pi_{-y}}U({\cal H}_{0},\tau)
+\end{equation}
+
+So, if we have ideal pulses $\omega_{1}(t)t_{w}=\pi$, we have these
+Hamiltonians and evolution for different time intervals.
+
+If we have non-ideal pulses with flip angle $\beta=\int_{-\infty}^{\infty}\omega_{1}(t)dt=0.925221\omega_{1}T_{2}=\pi-\epsilon$.
+
+According {[}Andreas Brinkmann{]} , we have to divide our Hamiltonian
+into two parts
+
+\begin{equation}
+{\cal H}={\cal H}_{A}+{\cal H}_{B}
+\end{equation}
+
+with conditions : 1) $U_{A}(t_{a},t_{b})=\exp(-i{\cal H}_{A}(t_{b}-t_{a}))$
+can be estimated analytically and periodicity ${\cal H}_{A}(t+NT)={\cal H}_{A}(t)$,
+2) $H_{B}(t)$ is small, $\max||{\cal H}_{B}T||\ll1$ , ${\cal H}_{B}(t+NT)={\cal H}_{B}(t)$.
+
+In our case we have
+\begin{equation}
+{\cal H}_{A}=\Delta\hat{S}_{z}+a_{\perp}\hat{S}_{z}\hat{I}_{x}+a_{\parallel}S_{z}I_{z}+\gamma_{n}H_{0}I_{z}+\omega_{\pi}(x(t)S_{x}+y(t)S_{y})
+\end{equation}
+
+\begin{equation}
+{\cal H}_{B}=\omega_{\varepsilon}(x(t)S_{x}+y(t)S_{y})
+\end{equation}
+
+Now we want to transform Hamiltonian ${\cal H}_{B}$ in toggling reference
+frame $\tilde{{\cal H}}_{B}=U_{A}^{\dagger}{\cal H}_{B}U_{A}$
+\end{document}
+
+\section{Average Hamiltonian}
+
+
+
+
+
+
+\end{document}

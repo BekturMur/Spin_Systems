@@ -1,0 +1,100 @@
+%% LyX 2.3.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amsbsy}
+\usepackage{esint}
+\usepackage{babel}
+\begin{document}
+Our goal is to study spin echo with finite duration pulse. Some papers
+showed that finite-duration pulse can lead to non-negligible effect.
+
+We have a Hamiltonian in lab frame
+
+\[
+{\cal H}=-\gamma_{e}H_{0}S_{z}+\gamma_{n}H_{0}I_{z}+A\boldsymbol{S}\cdot\boldsymbol{I}+x(t)\omega_{1}(t)(S_{x}\cos(\omega t)+S_{y}\sin(\omega t))+
+\]
+
+\[
++y(t)\omega_{1}(t)(-S_{x}\sin(\omega t)+S_{y}\cos(\omega t))
+\]
+
+First and second terms are Zeeman fields for electron and nuclear
+species, third term is hyperfine coupling, fourth term is $X$-pulse,
+fifth term is $Y$-pulse.
+
+\[
+\omega_{1}(t)=\omega_{1}(1-0.956(t/T_{2})^{2})e^{-(t/T_{2})^{2}}
+\]
+
+$-1\leq x(t)\leq1,-1\leq y(t)\leq1$ - modulation of signals, $T_{2}$
+is width of the signal
+
+Nuclear Zeeman frequencies are much larger than the hyperfine interaction
+($\gamma_{n}H_{0}\gg A$), so that the hyperfine interaction can be
+separated into secular and nonsecular contributions,
+
+\[
+A\boldsymbol{S}\cdot\boldsymbol{I}\approx AS_{z}(a_{\parallel}I_{z}+a_{\perp}I_{x})
+\]
+
+with $a_{\parallel}=A\cos\theta$ , $a_{\perp}=A\sin\theta$.
+
+We have a Hamiltonian in rotating frame
+
+\[
+{\cal H}={\cal H}_{0}+{\cal H}_{P}(t)
+\]
+
+\[
+{\cal H}_{0}=(\omega-\gamma_{e}H_{0})\hat{S}_{z}+a_{\perp}\hat{S}_{z}\hat{I}_{x}+a_{\parallel}S_{z}I_{z}+\gamma_{n}H_{0}I_{z}
+\]
+
+with $\Delta=(\omega-\gamma_{e}H_{0})$,
+
+\[
+{\cal H}_{P}(t)=x(t)\omega_{1}(t)S_{x}+y(t)\omega_{1}(t)S_{y}
+\]
+
+We have evolution $(\tau-\pi_{x}-2\tau-\pi_{y}-2\tau-\pi_{-x}-2\tau-\pi_{-y}-\tau)^{N}$
+
+\[
+U=U_{\pi/2}U_{block}^{N}U_{\pi/2}
+\]
+
+where
+
+\[
+U_{block}=U({\cal H}_{0},\tau)U_{\pi_{x}}U({\cal H}_{0},2\tau)U_{\pi_{y}}U({\cal H}_{0},2\tau)U_{\pi_{-x}}U({\cal H}_{0},2\tau)U_{\pi_{-y}}U({\cal H}_{0},\tau)
+\]
+
+So, if we have ideal pulses $\omega_{1}(t)t_{w}=\pi$, we have these
+Hamiltonians and evolution for different time intervals.
+
+If we have non-ideal pulses with flip angle $\beta=\int_{-\infty}^{\infty}\omega_{1}(t)dt=0.925221\omega_{1}T_{2}=\pi-\epsilon$.
+
+According {[}Andreas Brinkmann{]} , we have to divide our Hamiltonian
+into two parts
+
+\[
+{\cal H}={\cal H}_{A}+{\cal H}_{B}
+\]
+
+with conditions : 1) $U_{A}(t_{a},t_{b})=\exp(-i{\cal H}_{A}(t_{b}-t_{a}))$
+can be estimated analytically and perioficity${\cal H}_{A}(t+NT)={\cal H}_{A}(t)$,
+2) $H_{B}(t)$ is small, $\max||{\cal H}_{B}T||\ll1$ , ${\cal H}_{B}(t+NT)={\cal H}_{B}(t)$.
+
+In our case we have
+
+\[
+{\cal H}_{A}=\Delta\hat{S}_{z}+a_{\perp}\hat{S}_{z}\hat{I}_{x}+a_{\parallel}S_{z}I_{z}+\gamma_{n}H_{0}I_{z}+\omega_{\pi}(x(t)S_{x}+y(t)S_{y})
+\]
+
+\[
+{\cal H}_{B}=\omega_{\varepsilon}(x(t)S_{x}+y(t)S_{y})
+\]
+
+Now we want to transform Hamiltonian ${\cal H}_{B}$ in toggling reference
+frame $\tilde{{\cal H}}_{B}=U_{A}^{\dagger}{\cal H}_{B}U_{A}$
+\end{document}

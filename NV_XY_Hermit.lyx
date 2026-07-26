@@ -1,0 +1,516 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Our goal is to study spin echo with finite duration pulse.
+ Some papers showed that finite-duration pulse can lead to non-negligible
+ effect.
+\end_layout
+
+\begin_layout Standard
+We have a Hamiltonian in lab frame
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}=-\gamma_{e}H_{0}S_{z}+\gamma_{n}H_{0}I_{z}+A\boldsymbol{S}\cdot\boldsymbol{I}+\omega_{1}(t-\tau/2+nT)(S_{x}\cos(\omega t)+S_{y}\sin(\omega t))+
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
++\omega_{1}(t-3\tau/2+nT)(-S_{x}\sin(\omega t)+S_{y}\cos(\omega t))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nuclear Zeeman frequencies are much larger than the hyperfine interaction
+ (
+\begin_inset Formula $\gamma_{n}H_{0}\gg A$
+\end_inset
+
+), so that the hyperfine interaction can be separated into secular and nonsecula
+r contributions,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A\boldsymbol{S}\cdot\boldsymbol{I}\approx AS_{z}(a_{\parallel}I_{z}+a_{\perp}I_{x})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $a_{\parallel}=A\cos\theta$
+\end_inset
+
+ , 
+\begin_inset Formula $a_{\perp}=A\sin\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We have a Hamiltonian in rotating frame
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}={\cal H}_{0}+\sum_{n=0}^{N}{\cal H}_{P}^{n}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}_{0}=(\omega-\gamma_{e}H_{0})\hat{S}_{z}+a_{\perp}\hat{S}_{z}\hat{I}_{x}+a_{\parallel}S_{z}I_{z}+\gamma_{n}H_{0}I_{z}\approx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\approx\Delta S_{z}+a_{\perp}S_{z}I_{x}+\omega_{0}I_{z},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $\Delta=(\omega-\gamma_{e}H_{0})$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{0}=\gamma_{n}H_{0}+a_{\parallel}S_{z}\approx\gamma_{n}H_{0}+a_{\parallel}/2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Without second term we have no spin echo.
+ If we don't have only fourth term we have simple spin echo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}_{P}^{n}(t)=\omega_{1}(t-\tau/2+nT)\hat{S}_{x}+\omega_{1}(t-3\tau/2+nT)\hat{S}_{y},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $T=2\tau+2T_{2}$
+\end_inset
+
+, with
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\omega_{1}(t)=\omega_{1}(1-0.956(t/T_{2})^{2})e^{-(t/T_{2})^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have evolution 
+\begin_inset Formula $U=T\exp(-i\int({\cal H}_{0}+\sum_{n=0}^{N}{\cal H}_{P}^{n}(t))t)$
+\end_inset
+
+.
+ Here 
+\begin_inset Formula $T$
+\end_inset
+
+ - is time-ordering.
+ So, we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U=U_{\pi/2}U_{0}...U_{N}U_{\pi/2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U_{0}=T\exp(-i\int{\cal H}_{0}+{\cal H}_{P}^{0}(t))=\exp(-i(\int_{0}^{\tau/2}dt{\cal H}_{0}+\int_{-\varepsilon}^{\varepsilon}dt\omega_{1}(t-\tau/2)\hat{S}_{x}+
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
++\int_{\tau/2}^{3\tau/2}dt{\cal H}_{0}+\int_{-\varepsilon}^{\varepsilon}dt\omega_{1}(t-3\tau/2)\hat{S}_{y}+\int_{3\tau/2}^{2\tau}dt{\cal H}_{0}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We consider the case with 
+\begin_inset Formula $T_{2}\ll\tau$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}(t)\approx\bar{{\cal H}}+{\cal H}^{(1)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we have average Hamiltonian
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{{\cal H}}=\frac{1}{T}\int_{0}^{T}{\cal H}=\frac{1}{T}(2\tau{\cal H}_{0}+\int_{-T_{2}}^{T_{2}}[\omega_{1}(t-\tau/2)\hat{S}_{x}+\omega_{1}(t-3\tau/2)\hat{S}_{y}]dt)=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{1}{2\tau+2T_{2}}(2\tau{\cal H}_{0}+F_{1}(\tau,T_{2})\hat{S}_{x}+F_{2}(\tau,T_{2})\hat{S}_{y})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Magnus first order correction
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}^{(1)}=-\frac{i}{2T\hbar}\int_{0}^{T}dt_{2}\int_{0}^{t_{2}}dt_{1}[{\cal H}(t_{2}),{\cal H}(t_{1})]=-\frac{i}{2T\hbar}(\int_{-\varepsilon}^{\varepsilon}dt_{2}\int_{-\varepsilon}^{\varepsilon}dt_{1}\omega_{1}(t_{2}-\frac{3\tau}{2})\omega_{1}(t_{1}-\frac{\tau}{2}))[\hat{S}_{y},\hat{S}_{x}]+
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
++\tau\int_{-\varepsilon}^{\varepsilon}dt_{1}\omega_{1}(t_{1}-\frac{\tau}{2})[\Delta\hat{S}_{z}+a_{\perp}\hat{S}_{z}\hat{I}_{x},\hat{S}_{x}]+\tau\int_{-\varepsilon}^{\varepsilon}dt_{1}\omega_{1}(t_{1}-\frac{3\tau}{2})[\hat{S}_{y,}\Delta\hat{S}_{z}+a_{\perp}\hat{S}_{z}\hat{I}_{x}])=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{1}{2T\hbar}(-\int_{-\varepsilon}^{\varepsilon}dt_{2}\int_{-\varepsilon}^{\varepsilon}dt_{1}\omega_{1}(t_{2}-\frac{3\tau}{2})\omega_{1}(t_{1}-\frac{\tau}{2}))\hat{S}_{z}+
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
++\tau\int_{-\varepsilon}^{\varepsilon}dt_{1}\omega_{1}(t_{1}-\frac{\tau}{2})[\Delta\hat{S}_{y}+a_{\perp}\hat{S}_{y}\hat{I}_{x}]+\tau\int_{-\varepsilon}^{\varepsilon}dt_{1}\omega_{1}(t_{1}-\frac{3\tau}{2})[\Delta\hat{S}_{x}+a_{\perp}\hat{S}_{x}\hat{I}_{x}])
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $\omega_{1}$
+\end_inset
+
+ is stronly decaying function, we can replace limits of integration 
+\begin_inset Formula $\int_{-\varepsilon}^{\varepsilon}\rightarrow\int_{-\infty}^{\infty}$
+\end_inset
+
+.
+ And
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}^{(1)}=\frac{1}{2T\hbar}(-\int_{0}^{T}dt_{2}\int_{0}^{T}dt_{1}\omega_{1}(t_{2}-\frac{3\tau}{2})\omega_{1}(t_{1}-\frac{\tau}{2}))\hat{S}_{z}+
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
++\tau\int_{0}^{T}dt_{1}\omega_{1}(t_{1}-\frac{\tau}{2})(\Delta\hat{S}_{y}+a_{\perp}\hat{S}_{y}\hat{I}_{x})+\tau\int_{0}^{T}dt_{1}\omega_{1}(t_{1}-\frac{3\tau}{2})(\Delta\hat{S}_{x}+a_{\perp}\hat{S}_{x}\hat{I}_{x}))=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{1}{2T\hbar}(-F_{3}(\tau)\hat{S_{z}}+F_{4}(\tau)(\Delta\hat{S}_{y}+a_{\perp}\hat{S}_{y}\hat{I}_{x})+F_{5}(\tau)(\Delta\hat{S}_{x}+a_{\perp}\hat{S}_{x}\hat{I}_{x}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So, we have average Hamiltonian + first Magnus correction
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}=\bar{{\cal H}}+{\cal H}^{(1)}=\frac{1}{T}(2\tau{\cal H}_{0}+F_{1}(\tau)\hat{S}_{x}+F_{2}(\tau)\hat{S}_{y})+
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
++\frac{1}{2T\hbar}(-F_{3}(\tau)\hat{S_{z}}+F_{4}(\tau)(\Delta\hat{S}_{y}+a_{\perp}\hat{S}_{y}\hat{I}_{x})+F_{5}(\tau)(\Delta\hat{S}_{x}+a_{\perp}\hat{S}_{x}\hat{I}_{x})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let us consider spin echo in two-qubit state in the framework of denisty
+ matrix.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\langle S_{x}\rangle=Tr(S_{x}\rho(t))=Tr(S_{x}\rho(t))=Tr(S_{x}T(e^{-i{\cal H}t}\rho(0)e^{i{\cal H}t}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We have initial state 
+\begin_inset Formula $|x\rangle$
+\end_inset
+
+ , 
+\begin_inset Formula $\rho_{S}(0)=1+\varepsilon S_{x}\otimes1_{n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Tr(S_{x}T(e^{-i{\cal H}t}\rho(0)e^{i{\cal H}t}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula ${\cal H}(t)\approx\bar{{\cal H}}+{\cal H}^{(1)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We want to calculate magnetization
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\langle S_{x}(t=T=2\tau)\rangle=Tr(S_{x}e^{-i(\bar{{\cal H}}+{\cal H}^{(1)})T}\rho(0)e^{i\bar{({\cal H}}+{\cal H}^{(1)})T}))=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\varepsilon Tr(S_{x}e^{-i(\bar{{\cal H}}+{\cal H}^{(1)})T}S_{x}e^{i(\bar{{\cal H}}+{\cal H}^{(1)})T}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Идеальную часть импульса надо интегрировать отдельно
+\end_layout
+
+\end_body
+\end_document

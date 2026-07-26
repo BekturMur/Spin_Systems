@@ -1,0 +1,43 @@
+# Build products
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+_deps/
+
+# Compiled legacy programs and generated test helpers
+*.e
+spinsim/tests/data/gen_bessel_reference
+
+# Simulation output (the local archive is several gigabytes and reproducible
+# from the tracked Fortran/TOML inputs)
+*.out
+*.cur
+*.time
+**/qq
+
+# Generated documentation files
+*.aux
+*.log
+*.synctex.gz
+*.toc
+*.fls
+*.fdb_latexmk
+*.pdf
+
+# LyX/editor backups
+\#*\#
+*.emergency
+*~
+
+# Python and OS metadata
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Local copies of third-party literature
+/Papers/
+

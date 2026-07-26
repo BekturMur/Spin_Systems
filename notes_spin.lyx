@@ -1,0 +1,594 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+{\cal H}=-\gamma\hbar BS_{z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1) Schroedinger equation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+i\hbar\frac{\partial}{\partial t}\Psi={\cal H}\Psi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+i\hbar\frac{d}{dt}\Psi=-\gamma\hbar BS_{z}\Psi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Psi=\Psi(0)\begin{pmatrix}\exp(iE_{+}t/2\hbar)\\
+\exp(iE_{-}t/2\hbar)
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $E_{\pm}=\pm\gamma\hbar B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Psi=c_{+}\chi_{+}e^{iE_{+}t}+c_{-}\chi_{-}e^{iE_{-}t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+2) Heiseinberg equation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d\boldsymbol{S}(t)}{dt}=\frac{i}{\hbar}[{\cal H},\boldsymbol{S}(t)]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d\boldsymbol{S}(t)}{dt}=-\frac{\gamma}{2}\boldsymbol{S}(t)\times\boldsymbol{B}=
+\]
+
+\end_inset
+
+ z
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S_{x}(t)=A_{x}S_{x}\cos(\gamma Bt)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S_{y}(t)=A_{y}S_{y}\sin(\gamma Bt)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S_{z}(t)=A_{z}S_{z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+3)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\langle S_{i}\rangle=\gamma\hbar\sum_{mm'}c_{m}^{*}c_{m}\langle m|S_{i}|m'\rangle e^{i(E_{m'}-E_{m})t/\hbar}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\langle S_{x}\rangle=\gamma\hbar(c_{-1/2}^{*}c_{1/2}e^{i\gamma Bt}+c_{1/2}^{*}c_{-1/2}e^{-i\gamma Bt})/2
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+c_{1/2}=ae^{i\alpha}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+c_{-1/2}=be^{i\beta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\langle S_{x}\rangle=\gamma\hbar(abe^{i(\gamma Bt+\alpha-\beta)}+abe^{-i(\gamma Bt+\alpha-\beta)})/2=ab\gamma\hbar\cos(\gamma Bt+\alpha-\beta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\langle S_{y}\rangle=\gamma\hbar(ic_{-1/2}^{*}c_{1/2}e^{i\gamma Bt}+ic_{1/2}^{*}c_{-1/2}e^{-i\gamma Bt})/2=-ab\sin(\gamma Bt+\alpha-\beta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\langle S_{z}\rangle=\gamma\hbar(|c_{1/2}|^{2}-|c_{-1/2}|^{2})/2=\gamma\hbar(|a|^{2}-|b|^{2})/2
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+4)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\langle S_{x}(t)S_{x}(0)\rangle=\gamma\hbar\sum_{mm'}c_{m}^{*}c_{m}\langle m|S_{x}(t)S_{x}|m'\rangle e^{i(E_{m'}-E_{m})t/\hbar}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $\Psi=\sum_{m}c_{m}\chi_{m}e^{iE_{m}t/\hbar}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\langle S_{x}(t)S_{x}(0)\rangle=\sum_{mm'}c_{m}^{*}c_{m'}\chi_{m}^{*}(S_{x}S_{x}\cos(\omega_{L}t))\chi_{m'}e^{-i(E_{m}-E_{m'})t/\hbar}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\chi_{m}^{*}S_{x}S_{x}\chi_{m'}=\langle m|S_{x}S_{x}|m'\rangle=\frac{1}{4}\delta_{mm'}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{A_{x}}{4}\cos(\omega_{L}t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\langle S_{y}(t)S_{y}(0)\rangle=\sum_{mm'}c_{m}^{*}c_{m'}\chi_{m}^{*}(S_{y}S_{y}\sin(\omega_{L}t))\chi_{m'}e^{-i(E_{m}-E_{m'})t/\hbar}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\chi_{m}^{*}S_{x}S_{x}\chi_{m'}=\langle m|S_{y}S_{y}|m'\rangle=\frac{1}{4}\delta_{mm'}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{A_{y}}{4}\sin(\omega_{L}t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\langle S_{z}(t)S_{z}\rangle=\sum_{mm'}c_{m}^{*}c_{m'}\chi_{m}^{*}(S_{z}(t)S_{z}))\chi_{m'}e^{-i(E_{m}-E_{m'})t/\hbar}=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\chi_{m}^{*}S_{x}S_{x}\chi_{m'}=\langle m|S_{z}S_{z}|m'\rangle=\frac{1}{4}\delta_{mm'}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=A_{z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+5)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U(t)=e^{-i{\cal H}t}=e^{i\gamma BS_{z}t}=\cos(\gamma Bt/2)+i\sigma_{z}\sin(\gamma Bt/2)=\begin{pmatrix}e^{i\omega_{L}t/2} & 0\\
+0 & e^{-i\omega_{L}t/2}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Psi(t)=U(t)\begin{pmatrix}1\\
+1
+\end{pmatrix}\Psi(0)=\begin{pmatrix}e^{i\omega_{L}t/2}\\
+e^{-i\omega_{L}t/2}
+\end{pmatrix}\Psi(0)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho(t)=[{\cal H},\rho]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho=U\rho(0)U^{\dagger}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho(0)=\begin{pmatrix}a & b+ic\\
+b-ic & 1-a
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\langle S_{x}\rangle=Tr(\rho S_{x})=b
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\langle S_{y}\rangle=Tr(\rho S_{y})=-c
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\langle S_{z}\rangle=Tr(\rho S_{z})=\frac{1}{2}(2a-1)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+b=\langle S_{x}\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+c=-\langle S_{y}\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a=\frac{1}{2}+\langle S_{z}\rangle
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho=\frac{1}{2}I+\langle S_{i}\rangle S_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho(0)=\begin{pmatrix}\frac{1}{2}+\langle S_{z}\rangle & \langle S_{x}\rangle-i\langle S_{y}\rangle\\
+\langle S_{x}\rangle+i\langle S_{y}\rangle & \frac{1}{2}-\langle S_{z}\rangle
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho(t)=\begin{pmatrix}e^{i\omega_{L}t/2} & 0\\
+0 & e^{-i\omega_{L}t/2}
+\end{pmatrix}\begin{pmatrix}\frac{1}{2}+\langle S_{z}\rangle & \langle S_{x}\rangle-i\langle S_{y}\rangle\\
+\langle S_{x}\rangle+i\langle S_{y}\rangle & \frac{1}{2}-\langle S_{z}\rangle
+\end{pmatrix}\begin{pmatrix}e^{-i\omega_{L}t/2} & 0\\
+0 & e^{i\omega_{L}t/2}
+\end{pmatrix}=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\begin{pmatrix}\frac{1}{2}+\langle S_{z}\rangle & e^{i\omega_{L}t}(\langle S_{x}\rangle-i\langle S_{y}\rangle)\\
+e^{-i\omega_{L}t}(\langle S_{x}\rangle+i\langle S_{y}\rangle) & \frac{1}{2}-\langle S_{z}\rangle
+\end{pmatrix}=\frac{1}{2}I+\langle S_{i}(t)\rangle S_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
